@@ -10,7 +10,7 @@ sub new {
 
 sub before_update_foreign_keys {
   my ($self, %args) = @_;
-  my $dbh = $self->{aux_cxn}->dbh;
+  my $dbh = $self->{cxn}->dbh;
 
   if ($self->{execute}) {
     print "Disable foreign key checks\n";
@@ -20,7 +20,7 @@ sub before_update_foreign_keys {
 
 sub after_update_foreign_keys {
   my ($self, %args) = @_;
-  my $dbh = $self->{aux_cxn}->dbh;
+  my $dbh = $self->{cxn}->dbh;
 
   if ($self->{execute}) {
     print "Enable foreign key checks\n";
